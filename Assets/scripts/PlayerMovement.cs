@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private bool _canJump = false; // Jump when touching the ground.
     private bool _standUp = true; // Stand up when there is no object on top of the player
 
+    private bool _isDoor = false;
+    
     /// <summary>
     /// These variables are used to check if the player
     /// is touching the ground or if the player has a roof
@@ -98,10 +100,16 @@ public class PlayerMovement : MonoBehaviour
         // Checks if the player presses the up arrow
         //  and if the player can jump
         //  jumps with jumpForce of force upward
-        if (Input.GetKeyDown("up") && _canJump)
+        if (Input.GetKeyDown("up") && _canJump && !_isDoor)
         {
-            _canJump = false;
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
+            _canJump = false;
+
+        }
+        else if (Input.GetKeyDown("up") && _isDoor)
+        {
+            gameObject.transform.position = new Vector3(0.5f, -1, 0);
+            _isDoor = false;
         }
         
         // Checks if the player is pressing the down key
@@ -135,6 +143,13 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.Raycast(origin, direction, _rayDistance);
         
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Door"))
+        {
+            _isDoor = true;
+        }
+    }
 }
  
