@@ -1,12 +1,3 @@
-/// <summary>
-/// I talked again to Javid about what other features we should add,
-/// he asked me to add double jumping, dash and charge jump. After some thinking
-/// and ingenuity, the code I already had could be bended have these features.
-/// I would let the player jump despite not touhcing the ground, the longer the player
-/// presses the spacebar the more force I would add and when the player pressed a button while jumping,
-/// a force would push it to its direction.
-/// </summary>
-
 using System;
 using UnityEngine;
 
@@ -14,6 +5,18 @@ namespace scripts
 {
     public class PlayerMovement : MonoBehaviour
     {
+        private Player player;
+        /*private string _jumpKey = keyCode.Space;
+        private string _moveRightKey = keyCode.LeftArrow;
+        private string _moveLeftKey = keyCode.RightArrow;
+        private string _crouchKey = keyCode.shift;
+        private string _dashKey = keyCode.KeypadPeriod;
+        //private string _teleKey = keyCode.left;
+        private string _punchKey = keyCode.Mouse0;
+        private string _lightingKey  = keyCode.Mouse1;*/
+
+        /*private int _charge = 0;
+
         private int _playerDir;
         private int _wallDir;
 
@@ -28,8 +31,6 @@ namespace scripts
         private bool _standUp = true; // Stand up when there is no object on top of the player
         private int _canDash = MaxDash;
         private bool _canWallJump;
-
-        private bool _isDoor;
 
         /// <summary>
         /// These variables are used to check if the player
@@ -57,27 +58,30 @@ namespace scripts
         private readonly Vector2 _leftDir = new Vector2(-1, 0);
 
         private float _rayOriginOffset = 0.1f; // Offset stops the ray from colliding with the player
-        private float _rayDistance = 0.0001f;  // How far the ray travels
+        private float _rayDistance = 0.0001f;*/  // How far the ray travels
 
         //Forces that changes the movement of the player
         public float jumpForce = 200f;
         public float walkForce = 1000f;
-        public float dashForce = 500f;
-        public int   jumpTime = 5;
+        public float floatForce = 50f;
+        /*public float dashForce = 500f;*/
+        /*public int   jumpTime = 5;*/
 
         // Start is called before the first frame update
         private void Start()
         {
-            _rb = GetComponent<Rigidbody2D>();
-            _position = _rb.transform.position;
+            //_rb = GetComponent<Rigidbody2D>();
+            //_position = _rb.transform.position;
+            player = new Player(GetComponent<Rigidbody2D>(), walkForce, jumpForce, floatForce);
 
         }
 
         // Update is called once per frame
-        private void Update() {
+        private void FixedUpdate() {
+            player.update();
 
             //Basic movement of the player
-            Move();
+            /*Move();
 
             _position = _rb.transform.position;
 
@@ -86,6 +90,8 @@ namespace scripts
             Jump();
 
             Crouch();
+
+            Charge();
 
             if (Input.GetKey(".") && _canJump < MaxJumps && _canDash > 0) {
 
@@ -102,8 +108,14 @@ namespace scripts
                 }
 
 
-            }
+            }*/
 
+        }
+
+        /*private void Charge() {
+            if (_canJump == MaxJumps && !(_rb.velocity.Equals(new Vector2(0, 0)))) {
+                _charge++;
+            }
         }
 
         // Shoots a ray from an origins, towards a direction with the
@@ -118,14 +130,6 @@ namespace scripts
 
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.gameObject.CompareTag("Door"))
-            {
-                _isDoor = true;
-            }
-        }
-
         private void Crouch() {
           // Checks if the player is pressing the down key
           // It will disable the long hit box and enable the smaller one
@@ -133,13 +137,13 @@ namespace scripts
           // there are no collision of top
           if (Input.GetKey("down"))
           {
-              gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+              gameObject.GetComponent<BoxCollider2D>().enabled = false;
               gameObject.GetComponent<CircleCollider2D>().enabled = true;
 
           }
           else if (_standUp)
           {
-              gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
+              gameObject.GetComponent<BoxCollider2D>().enabled = true;
               gameObject.GetComponent<CircleCollider2D>().enabled = false;
 
           }
@@ -149,16 +153,11 @@ namespace scripts
           // Checks if the player presses the up arrow
           //  and if the player can jump
           //  jumps with jumpForce of force upward
-          if (Input.GetKeyDown("up") && _canJump > 0 && !_isDoor)
+          if (Input.GetKeyDown("up") && _canJump > 0)
           {
               _rb.AddForce(new Vector2(0, jumpForce));
               _canJump--;
 
-          }
-          else if (Input.GetKeyDown("up") && _isDoor)
-          {
-              gameObject.transform.position = new Vector3(0.5f, -1, 0);
-              _isDoor = false;
           }
           else if (Input.GetKeyDown("up") && _canWallJump && _canJump != MaxJumps)
           {
@@ -174,7 +173,7 @@ namespace scripts
               }
           }
 
-          if (Input.GetKey("up") && jumpTime > 0 && !_isDoor && _canJump < MaxJumps)
+          if (Input.GetKey("up") && jumpTime > 0  && _canJump < MaxJumps)
           {
               _rb.AddForce(new Vector2(0, 50));
               jumpTime--;
@@ -187,13 +186,13 @@ namespace scripts
           // Applies a walkForce to the respective direction
           if (Input.GetKey("right"))
           {
-              _rb.AddForce(new Vector2(walkForce * Time.deltaTime, 0));
+              _rb.AddForce(new Vector2(walkForce * Time.fixedDeltaTime, 0));
               _playerDir = 1;
 
           }
           else if (Input.GetKey("left"))
           {
-              _rb.AddForce(new Vector2(-walkForce * Time.deltaTime, 0));
+              _rb.AddForce(new Vector2(-walkForce * Time.fixedDeltaTime, 0));
               _playerDir = 0;
           }
 
@@ -264,7 +263,7 @@ namespace scripts
               _canWallJump = false;
           }
 
-        }
+        }*/
 
     }
 }

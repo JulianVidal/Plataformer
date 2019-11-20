@@ -13,7 +13,9 @@ public class PlayerTracking : MonoBehaviour
       
       // Moves the position of the camera to the one of the player
       // only on the x-axis
-      gameObject.transform.position = new Vector3(player.position.x, 0, -10);
+      if (!(player.position.x < 0)) {
+         gameObject.transform.position = new Vector3(player.position.x, gameObject.transform.position.y, -10);
+      }
       
    }
 }
