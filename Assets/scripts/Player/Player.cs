@@ -5,9 +5,9 @@ public class Player
 {
     public Movement body;
 
-    public Player(Rigidbody2D rigidbody, float walkForce, float jumpForce, float floatForce)
+    public Player(GameObject gameObject, Rigidbody2D rigidbody, float walkForce, float jumpForce, float floatForce)
     {
-        body = new Movement(rigidbody, walkForce, jumpForce, floatForce);
+        body = new Movement(gameObject, rigidbody, walkForce, jumpForce, floatForce);
     }
 
     public void update()

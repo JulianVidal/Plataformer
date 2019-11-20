@@ -72,7 +72,7 @@ namespace scripts
         {
             //_rb = GetComponent<Rigidbody2D>();
             //_position = _rb.transform.position;
-            player = new Player(GetComponent<Rigidbody2D>(), walkForce, jumpForce, floatForce);
+            player = new Player(gameObject, GetComponent<Rigidbody2D>(), walkForce, jumpForce, floatForce);
 
         }
 

@@ -3,6 +3,7 @@ using UnityEngine;
 public class Movement
 {
     private Rigidbody2D _rb;
+    private GameObject _gb;
     private float _jumpForce;
     private float _walkForce;
     private float _floatForce;
@@ -12,15 +13,16 @@ public class Movement
     private int jumps = MaxJumps;
     private int jumpTime = MaxTimeJump;
 
-    private float standUp = false;
+    private bool standUp = false;
 
     public Collision collision;
 
 
 
-    public Movement(Rigidbody2D rigidbody, float walkForce, float jumpForce, float floatForce)
+    public Movement(GameObject gameObject, Rigidbody2D rigidbody, float walkForce, float jumpForce, float floatForce)
     {
         _rb = rigidbody;
+        _gb = gameObject;
         _jumpForce = jumpForce;
         _walkForce = walkForce;
         _floatForce = floatForce;
@@ -56,16 +58,7 @@ public class Movement
             jumps = MaxJumps;
             jumpTime = MaxTimeJump;
         }
-
-        if (Input.GetKeyDown("up"))
-        {
-            Debug.Log("Key");
-            Debug.Log(jumps);
-            Debug.Log(jumpTime);
-            Debug.Log(collision.checkGround());
-
-        }
-
+        
         if (Input.GetKeyDown("up") && jumps > 0)
         {
             _rb.velocity = new Vector3(_rb.velocity.x, 0, 0);
@@ -74,7 +67,7 @@ public class Movement
 
         }
 
-        if (Input.GetKey("up") && jumpTime > 0 && jumps < MaxJumps)
+        if (Input.GetKey("up") && jumpTime > 0 && jumps == MaxJumps - 1)
         {
             _rb.AddForce(new Vector2(0, _floatForce));
             jumpTime--;
@@ -88,15 +81,22 @@ public class Movement
 
         if (!collision.checkRoof())
         {
-            standUp = true;
+            standUp = false;
         }
         else
         {
-            standUp = false;
+            standUp = true;
         }
 
-        if (Input.GetKeyDown("down") && standUp == true) {
-
+        if (Input.GetKeyDown("down"))
+        {
+            _gb.GetComponent<BoxCollider2D>().enabled = false;
+            _gb.GetComponent<CircleCollider2D>().enabled = true;
+        }
+        else if (standUp == true)
+        {
+            _gb.GetComponent<BoxCollider2D>().enabled = true;
+            _gb.GetComponent<CircleCollider2D>().enabled = false;
         }
 
 
