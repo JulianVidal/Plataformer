@@ -35,8 +35,8 @@ public class Collision
         Vector2 midRight = new Vector2(_position.x + 0.5f - rayOriginOffset, _position.y + rayOriginOffset);
 
         // Casts ray and returns collisions
-        RaycastHit2D hitTopLeftN = CastRay(midLeft, topDir);
-        RaycastHit2D hitTopRightN = CastRay(midRight, topDir);
+        RaycastHit2D hitTopLeftN = CastRay(topLeft, topDir);
+        RaycastHit2D hitTopRightN = CastRay(topRight, topDir);
 
         RaycastHit2D hitBottomLeftS = CastRay(bottomLeft, bottomDir);
         RaycastHit2D hitBottomRightS = CastRay(bottomRight, bottomDir);
@@ -154,7 +154,6 @@ public class Collision
     {
         Hits hits = getHits();
 
-        // Lets the player jump if there is a collision with the ground
         if (hits._hitTopLeftN || hits._hitTopRightN)
         {
 

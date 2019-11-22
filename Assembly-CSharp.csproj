@@ -57,9 +57,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\scripts\Bar\ChargeBar.cs" />
+    <Compile Include="Assets\scripts\MainPlayer.cs" />
+    <Compile Include="Assets\scripts\Player\Attack.cs" />
+    <Compile Include="Assets\scripts\Player\Body.cs" />
     <Compile Include="Assets\scripts\Player\Collision.cs" />
     <Compile Include="Assets\scripts\Player\Hits.cs" />
-    <Compile Include="Assets\scripts\Player\Movement.cs" />
+    <Compile Include="Assets\scripts\Player\Move.cs" />
     <Compile Include="Assets\scripts\Player\Player.cs" />
     <Compile Include="Assets\scripts\PlayerMovement.cs" />
     <Compile Include="Assets\scripts\PlayerTracking.cs" />
