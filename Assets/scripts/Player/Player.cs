@@ -15,8 +15,6 @@ public class Player
         body._move.right();
         body._move.left();
 
-        body._move.addCharge();
-
         body._move.jump();
 
         body._move.crouch();
@@ -28,5 +26,11 @@ public class Player
     {
         return body.getChargeP();
     }
+
+    public float getHealthP()
+    {
+        return body.getHealthP();
+    }
+
 
 }

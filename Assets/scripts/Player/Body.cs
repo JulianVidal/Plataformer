@@ -14,4 +14,11 @@ public class Body
     {
         return _move.getChargeP();
     }
+
+    public float getHealthP()
+    {
+        return _move.getHealthP();
+    }
+
+
 }

@@ -5,11 +5,10 @@ namespace scripts
 {
     public class MainPlayer : MonoBehaviour
     {
-
-        Transform bar;
-
         private Player player;
-        private ChargeBar chargeBar;
+        private Bar chargeBar;
+
+        private Bar healthBar;
         /*private string _jumpKey = keyCode.Space;
         private string _moveRightKey = keyCode.LeftArrow;
         private string _moveLeftKey = keyCode.RightArrow;
@@ -77,9 +76,9 @@ namespace scripts
             //_rb = GetComponent<Rigidbody2D>();
             //_position = _rb.transform.position;
 
-            bar = transform.Find("/Main Camera").Find("ChargeBar").Find("Bar");
+            chargeBar = new Bar(transform.Find("/Main Camera").Find("ChargeBar").Find("Bar"));
 
-            chargeBar = new ChargeBar(bar);
+            healthBar = new Bar(transform.Find("/Main Camera").Find("HealthBar").Find("Bar"));
 
             player = new Player(gameObject, GetComponent<Rigidbody2D>(), walkForce, jumpForce, floatForce);
         }
@@ -89,6 +88,7 @@ namespace scripts
         {
             player.update();
             chargeBar.setSize(player.getChargeP());
+            healthBar.setSize(player.getHealthP());
 
 
             //Basic movement of the player

@@ -18,9 +18,14 @@ public class Move
     public Collision _collision;
 
     public Attack _attack;
-    private float charge = 0;
 
     private float MaxCharge = 1000;
+
+    private float charge = 0;
+
+    private float MaxHealth = 100;
+    private float health;
+
 
 
     public Move(GameObject gameObject, Rigidbody2D rigidbody, float walkForce, float jumpForce, float floatForce)
@@ -32,6 +37,7 @@ public class Move
         _floatForce = floatForce;
         _collision = new Collision(rigidbody.transform.position);
         _attack = new Attack(gameObject);
+        health = MaxHealth;
     }
 
     public void right()
@@ -39,6 +45,7 @@ public class Move
         if (Input.GetKey("right"))
         {
             _rb.AddForce(new Vector2(_walkForce * Time.fixedDeltaTime, 0));
+            addCharge();
         }
     }
     public void left()
@@ -46,6 +53,7 @@ public class Move
         if (Input.GetKey("left"))
         {
             _rb.AddForce(new Vector2(-_walkForce * Time.fixedDeltaTime, 0));
+            addCharge();
         }
     }
 
@@ -102,7 +110,7 @@ public class Move
 
     }
 
-    public void addCharge()
+    private void addCharge()
     {
 
         Vector2 stop = new Vector2(0, _rb.velocity.y);
@@ -110,11 +118,17 @@ public class Move
         if (!(_rb.velocity.Equals(stop)) && charge <= MaxCharge)
         {
             charge++;
+            _walkForce++;
         }
     }
 
     public float getChargeP()
     {
         return charge / MaxCharge;
+    }
+
+    public float getHealthP()
+    {
+        return health / MaxHealth;
     }
 }

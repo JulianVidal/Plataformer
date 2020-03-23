@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChargeBar
+public class Bar
 {
-    public ChargeBar(Transform bar) {
+    public Bar(Transform bar) {
         _bar = bar;
     }
 

@@ -290,10 +290,9 @@
 /define:UNITY_TEAM_LICENSE
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
-"Assets/scripts/Bar/ChargeBar.cs"
+"Assets/scripts/Player/Attack.cs"
+"Assets/scripts/Player/Body.cs"
 "Assets/scripts/Player/Collision.cs"
 "Assets/scripts/Player/Hits.cs"
-"Assets/scripts/Player/Movement.cs"
+"Assets/scripts/Player/Move.cs"
 "Assets/scripts/Player/Player.cs"
-"Assets/scripts/PlayerMovement.cs"
-"Assets/scripts/PlayerTracking.cs"
