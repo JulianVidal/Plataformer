@@ -7,7 +7,18 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="scripts" t="Include">
-          <e p="PlayerMovement.cs" t="Include" />
+          <e p="Bar" t="Include">
+            <e p="Bar.cs" t="Include" />
+          </e>
+          <e p="MainPlayer.cs" t="Include" />
+          <e p="Player" t="Include">
+            <e p="Attack.cs" t="Include" />
+            <e p="Body.cs" t="Include" />
+            <e p="Collision.cs" t="Include" />
+            <e p="Hits.cs" t="Include" />
+            <e p="Move.cs" t="Include" />
+            <e p="Player.cs" t="Include" />
+          </e>
           <e p="PlayerTracking.cs" t="Include" />
         </e>
       </e>
