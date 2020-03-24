@@ -128,7 +128,7 @@ public class Collision
 
         Debug.DrawRay(origin, direction, Color.red, 0f, false);
 
-        return Physics2D.Raycast(origin, direction, rayDistance);
+        return Physics2D.Raycast(origin, direction, rayDistance, LayerMask.GetMask("Ground"));
 
     }
 
@@ -139,9 +139,7 @@ public class Collision
         // Lets the player jump if there is a collision with the ground
         if (hits._hitBottomLeftS || hits._hitBottomRightS)
         {
-
             return true;
-
         }
         else
         {

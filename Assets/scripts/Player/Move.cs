@@ -85,7 +85,6 @@ public class Move
             _rb.AddForce(new Vector2(0, _floatForce));
             jumpTime--;
         }
-
     }
 
     public void crouch()
