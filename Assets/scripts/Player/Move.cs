@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 public class Move
 {
@@ -11,7 +10,7 @@ public class Move
     private const int MaxJumps = 2;
     private const int MaxTimeJump = 10;
     private int _jumps = MaxJumps;
-    private int _jumpTime = MaxTimeJump;
+    //private int _jumpTime = MaxTimeJump;
 
     private bool _standUp;
 
@@ -65,7 +64,7 @@ public class Move
         if (_collision.CheckGround())
         {
             _jumps = MaxJumps;
-            _jumpTime = MaxTimeJump;
+            //_jumpTime = MaxTimeJump;
         }
 
         if (Input.GetKeyDown("up") && _jumps > 0 && _standUp)
@@ -73,14 +72,14 @@ public class Move
             _rb.velocity = new Vector3(_rb.velocity.x, 0, 0);
             _rb.AddForce(new Vector2(0, _jumpForce));
             _jumps--;
-
+            //_jumpTime = MaxTimeJump;
         }
 
-        if (Input.GetKey("up") && _jumpTime > 0 && _jumps == MaxJumps - 1)
+        /*if (Input.GetKey("up") && _jumpTime > 0 && _jumps == MaxJumps - 1)
         {
             _rb.AddForce(new Vector2(0, _floatForce));
             _jumpTime--;
-        }
+        }*/
     }
 
     public void Crouch()
