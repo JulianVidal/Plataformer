@@ -5,10 +5,10 @@ namespace scripts
 {
     public class MainPlayer : MonoBehaviour
     {
-        private Player player;
-        private Bar chargeBar;
+        private Player _player;
+        private Bar _chargeBar;
 
-        private Bar healthBar;
+        private Bar _healthBar;
 
         //Forces that changes the movement of the player
         public float jumpForce = 200f;
@@ -21,19 +21,19 @@ namespace scripts
         private void Start()
         {
 
-            chargeBar = new Bar(transform.Find("/Main Camera").Find("ChargeBar").Find("Bar"));
+            _chargeBar = new Bar(transform.Find("/Main Camera").Find("ChargeBar").Find("Bar"));
 
-            healthBar = new Bar(transform.Find("/Main Camera").Find("HealthBar").Find("Bar"));
+            _healthBar = new Bar(transform.Find("/Main Camera").Find("HealthBar").Find("Bar"));
 
-            player = new Player(gameObject, GetComponent<Rigidbody2D>(), walkForce, jumpForce, floatForce);
+            _player = new Player(gameObject, GetComponent<Rigidbody2D>(), walkForce, jumpForce, floatForce);
         }
 
         // Update is called once per frame
         private void FixedUpdate()
         {
-            player.update();
-            chargeBar.setSize(player.getChargeP());
-            healthBar.setSize(player.getHealthP());
+            _player.Update();
+            _chargeBar.SetSize(_player.GetChargeP());
+            _healthBar.SetSize(_player.GetHealthP());
 
         }
 

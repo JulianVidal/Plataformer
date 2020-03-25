@@ -3,33 +3,33 @@ using UnityEngine;
 
 public class Player
 {
-    public Body body;
+    private readonly Body _body;
 
-    public Player(GameObject gameObject, Rigidbody2D rigidbody, float walkForce, float jumpForce, float floatForce)
+    public Player(GameObject gameObject, Rigidbody2D rigidBody2D, float walkForce, float jumpForce, float floatForce)
     {
-        body = new Body(gameObject, rigidbody, walkForce, jumpForce, floatForce);
+        _body = new Body(gameObject, rigidBody2D, walkForce, jumpForce, floatForce);
     }
 
-    public void update()
+    public void Update()
     {
-        body._move.right();
-        body._move.left();
+        _body.Move.Right();
+        _body.Move.Left();
 
-        body._move.jump();
+        _body.Move.Jump();
 
-        body._move.crouch();
+        _body.Move.Crouch();
 
-        body._attack.melee();
+        _body.Attack.Melee();
     }
 
-    public float getChargeP()
+    public float GetChargeP()
     {
-        return body.getChargeP();
+        return _body.GetChargeP();
     }
 
-    public float getHealthP()
+    public float GetHealthP()
     {
-        return body.getHealthP();
+        return _body.GetHealthP();
     }
 
 

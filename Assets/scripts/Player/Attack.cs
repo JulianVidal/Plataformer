@@ -1,24 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Attack
 {
-    private GameObject _gb;
+    private readonly GameObject _gb;
 
-    private float meleeCoolDown = 5;
-    private float meleeLast = 0;
+    private const float MeleeCoolDown = 5;
+    private float _meleeLast;
+    
     public Attack(GameObject gameObject)
     {
         _gb = gameObject;
     }
 
-    public void melee()
+    public void Melee()
     {
-        if (Input.GetKey(KeyCode.Space) && (Time.time - meleeLast) >= meleeCoolDown)
+        if (Input.GetKey(KeyCode.Space) && (Time.time - _meleeLast) >= MeleeCoolDown)
         {
             _gb.GetComponent<CapsuleCollider2D>().enabled = true;
-            meleeLast = Time.time;
+            _meleeLast = Time.time;
         }
         else if (!Input.GetKey(KeyCode.Space))
         {
