@@ -8,9 +8,11 @@
       <e p="Assets" t="Include">
         <e p="scripts" t="Include">
           <e p="Bar.cs" t="Include" />
+          <e p="Enemy" t="Include">
+            <e p="Enemy.cs" t="Include" />
+          </e>
           <e p="MainPlayer.cs" t="Include" />
           <e p="Player" t="Include">
-            <e p="Attack.cs" t="Include" />
             <e p="Body.cs" t="Include" />
             <e p="Collision.cs" t="Include" />
             <e p="Hits.cs" t="Include" />
@@ -18,6 +20,10 @@
             <e p="Player.cs" t="Include" />
           </e>
           <e p="PlayerTracking.cs" t="Include" />
+          <e p="Weapon" t="Include">
+            <e p="Projectile.cs" t="Include" />
+            <e p="Weapon.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />

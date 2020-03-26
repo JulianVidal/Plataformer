@@ -20,7 +20,7 @@ public class Collision
         _position = position;
     }
 
-    private Hits GetHits()
+    public Hits GetHits()
     {
         //Calculates the corners of the hit box
         var bottomLeft = new Vector2(_position.x - 0.5f + RayOriginOffset, _position.y - 1 - RayOriginOffset);
@@ -50,11 +50,11 @@ public class Collision
             topLeftN.collider,
             topRightN.collider,
             bottomLeftS.collider,
-            bottomRightS.collider//,
-            //bottomLeftE.collider,
-            //topLeftE.collider,
-            //bottomRightW.collider,
-            //topRightW.collider
+            bottomRightS.collider,
+            bottomLeftE.collider,
+            topLeftE.collider,
+            bottomRightW.collider,
+            topRightW.collider
                 );
     }
 

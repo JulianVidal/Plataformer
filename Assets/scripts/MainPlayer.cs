@@ -1,41 +1,57 @@
 using System;
 using UnityEngine;
 
-namespace scripts
+
+public class MainPlayer : MonoBehaviour
 {
-    public class MainPlayer : MonoBehaviour
+    public Player player;
+    public Bar chargeBar;
+
+    public Bar healthBar;
+
+    //Forces that changes the movement of the player
+    public float jumpForce = 200f;
+    public float walkForce = 1000f;
+    public float floatForce = 50f;
+
+    public Transform firePoint;
+    public GameObject fireBallPrefab;
+
+    
+    // Start is called before the first frame update
+    private void Start()
     {
-        private Player _player;
-        private Bar _chargeBar;
 
-        private Bar _healthBar;
+        chargeBar = new Bar(transform.Find("/Main Camera").Find("ChargeBar").Find("Bar"));
 
-        //Forces that changes the movement of the player
-        public float jumpForce = 200f;
-        public float walkForce = 1000f;
-        public float floatForce = 50f;
-        /*public float dashForce = 500f;*/
-        /*public int   jumpTime = 5;*/
+        healthBar = new Bar(transform.Find("/Main Camera").Find("HealthBar").Find("Bar"));
 
-        // Start is called before the first frame update
-        private void Start()
+        player = new Player(gameObject, GetComponent<Rigidbody2D>(), walkForce, jumpForce, floatForce);
+    }
+
+    // Update is called once per frame
+    private void FixedUpdate()
+    {
+        if (player.GetHealthP() < 0) return;
+        player.Update();
+        player.SetChargeP(player.GetChargeP() + (float)0.0001);
+        chargeBar.SetSize(player.GetChargeP());
+        healthBar.SetSize(player.GetHealthP());
+        
+        if (Input.GetKey(KeyCode.RightControl))
         {
-
-            _chargeBar = new Bar(transform.Find("/Main Camera").Find("ChargeBar").Find("Bar"));
-
-            _healthBar = new Bar(transform.Find("/Main Camera").Find("HealthBar").Find("Bar"));
-
-            _player = new Player(gameObject, GetComponent<Rigidbody2D>(), walkForce, jumpForce, floatForce);
-        }
-
-        // Update is called once per frame
-        private void FixedUpdate()
-        {
-            _player.Update();
-            _chargeBar.SetSize(_player.GetChargeP());
-            _healthBar.SetSize(_player.GetHealthP());
-
+            Shoot();
         }
 
     }
+    
+    void Shoot()
+    {
+        if (player.GetChargeP() > 0.05)
+        {
+            player.SetChargeP(player.GetChargeP() - (float)0.05);
+            Instantiate(fireBallPrefab, firePoint.position, firePoint.rotation);
+        }
+    }
 }
+

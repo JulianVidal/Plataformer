@@ -18,18 +18,27 @@ public class Player
         _body.Move.Jump();
 
         _body.Move.Crouch();
-
-        _body.Attack.Melee();
     }
 
     public float GetChargeP()
     {
         return _body.GetChargeP();
     }
+    
+    public void SetChargeP(float charge)
+    {
+        _body.SetChargeP(charge);
+    }
+
 
     public float GetHealthP()
     {
         return _body.GetHealthP();
+    }
+
+    public void SetHealthP(float health)
+    {
+      _body.SetHealthP(health);
     }
 
 

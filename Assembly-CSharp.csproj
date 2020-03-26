@@ -58,14 +58,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Bar.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\MainPlayer.cs" />
-    <Compile Include="Assets\Scripts\Player\Attack.cs" />
     <Compile Include="Assets\Scripts\Player\Body.cs" />
     <Compile Include="Assets\Scripts\Player\Collision.cs" />
     <Compile Include="Assets\Scripts\Player\Hits.cs" />
     <Compile Include="Assets\Scripts\Player\Move.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerTracking.cs" />
+    <Compile Include="Assets\Scripts\Weapon\Projectile.cs" />
+    <Compile Include="Assets\Scripts\Weapon\Weapon.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/JuliV/OneDrive/Documents/Plataformer/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

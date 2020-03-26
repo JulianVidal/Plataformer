@@ -23,7 +23,7 @@ public class Move
     private float _charge;
 
     private const float MaxHealth = 100;
-    private readonly float _health;
+    private float _health;
 
 
 
@@ -43,6 +43,7 @@ public class Move
     {
         if (Input.GetKey("right"))
         {
+            _gb.GetComponent<Transform>().rotation = Quaternion.Euler(0f, 0f, 0f);
             _rb.AddForce(new Vector2(_walkForce * Time.fixedDeltaTime, 0));
             AddCharge();
         }
@@ -52,6 +53,7 @@ public class Move
     {
         if (Input.GetKey("left"))
         {
+            _gb.GetComponent<Transform>().rotation = Quaternion.Euler(0f, 180f, 0f);
             _rb.AddForce(new Vector2(-_walkForce * Time.fixedDeltaTime, 0));
             AddCharge();
         }
@@ -120,9 +122,19 @@ public class Move
     {
         return _charge / MaxCharge;
     }
+    
+    public void SetChargeP(float charge)
+    {
+        _charge = charge * MaxCharge;
+    }
 
     public float GetHealthP()
     {
         return _health / MaxHealth;
+    }
+    
+    public void SetHealthP(float health)
+    {
+        _health = health * MaxHealth;
     }
 }

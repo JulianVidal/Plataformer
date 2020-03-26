@@ -6,14 +6,14 @@ public class Hits
     public readonly bool HitBottomLeftS;
     public readonly bool HitBottomRightS;
 
-    //private readonly bool _hitBottomLeftE;
-    //private readonly bool _hitTopLeftE;
+    public readonly bool HitBottomLeftE;
+    public readonly bool HitTopLeftE;
 
-    //private readonly bool _hitBottomRightW;
-    //private readonly bool _hitTopRightW;
+    public readonly bool HitBottomRightW;
+    public readonly bool HitTopRightW;
 
 
-    public Hits(bool hitTopLeftN, bool hitTopRightN, bool hitBottomLeftS, bool hitBottomRightS/*, bool hitBottomLeftE, bool hitTopLeftE, bool hitBottomRightW, bool hitTopRightW*/)
+    public Hits(bool hitTopLeftN, bool hitTopRightN, bool hitBottomLeftS, bool hitBottomRightS, bool hitBottomLeftE, bool hitTopLeftE, bool hitBottomRightW, bool hitTopRightW)
     {
         HitTopLeftN = hitTopLeftN;
         HitTopRightN = hitTopRightN;
@@ -21,10 +21,10 @@ public class Hits
         HitBottomLeftS = hitBottomLeftS;
         HitBottomRightS = hitBottomRightS;
 
-        //_hitBottomLeftE = hitBottomLeftE;
-        //_hitTopLeftE = hitTopLeftE;
+        HitBottomLeftE = hitBottomLeftE;
+        HitTopLeftE = hitTopLeftE;
 
-        //_hitBottomRightW = hitBottomRightW;
-        //_hitTopRightW = hitTopRightW;
+        HitBottomRightW = hitBottomRightW;
+        HitTopRightW = hitTopRightW;
     }
 }
